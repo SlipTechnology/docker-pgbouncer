@@ -19,3 +19,5 @@ steps:
       - 'managed'
       - '--region'
       - 'europe-west2'
+options:
+      logging: 'CLOUD_LOGGING_ONLY'
