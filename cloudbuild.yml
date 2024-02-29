@@ -1,11 +1,11 @@
 steps:
   # Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'europe-west2-docker.pkg.dev/$PROJECT_ID/$REPO_NAME:latest', '.']
+    args: ['build', '-t', 'europe-west2-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/pgb:latest', '.']
 
   # Push the Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'europe-west2-docker.pkg.dev/$PROJECT_ID/$REPO_NAME:latest']
+    args: ['push', 'europe-west2-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/pgb:latest']
 
   # Deploy the image to Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -14,7 +14,7 @@ steps:
       - 'deploy'
       - 'pgbouncer-docker'
       - '--image'
-      - 'europe-west2-docker.pkg.dev/$PROJECT_ID/$REPO_NAME:latest'
+      - 'europe-west2-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/pgb:latest'
       - '--platform'
       - 'managed'
       - '--region'
